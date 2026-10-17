@@ -2,8 +2,8 @@
   "schema": 1,
   "courseId": 2078,
   "repository": "LearningOS/2026a-arceos-185264646",
-  "commit": "3560e101cd96147c27127f394e7af106433e4cbc",
-  "score": 300,
+  "commit": "b241e9f3f322b81d5be2212363b33e7e73cbf507",
+  "score": 400,
   "totalScore": 600,
   "exercises": [
     {
@@ -16,8 +16,8 @@
     {
       "name": "ramfs_rename",
       "max": 100,
-      "score": 0,
-      "status": "fail",
+      "score": 100,
+      "status": "pass",
       "exitCode": 0
     },
     {
@@ -50,7 +50,7 @@
     }
   ],
   "student": "185264646",
-  "runId": "39020209774",
+  "runId": "39046723709",
   "runAttempt": "1",
   "upload": {
     "status": "pending"
