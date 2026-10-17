@@ -165,6 +165,18 @@ impl VfsNodeOps for DirNode {
         }
     }
 
+    fn rename(&self, old: &str, new: &str) -> VfsResult {
+        log::debug!("rename at ramfs: {} => {}", old, new);
+        let (old_name, _) = split_path(old);
+        let (_, new_name) = new.rsplit_once("/").unwrap_or(("", new));
+
+        log::debug!("old_name = {}, new_name = {}", old_name, new_name);
+        let entry = self.children.write().remove(old_name).ok_or(VfsError::NotFound)?;
+        self.children.write().insert(new_name.into(), entry);
+
+        Ok(())
+    }
+
     axfs_vfs::impl_vfs_dir_default! {}
 }
 
