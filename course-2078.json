@@ -2,8 +2,8 @@
   "schema": 1,
   "courseId": 2078,
   "repository": "LearningOS/2026a-arceos-185264646",
-  "commit": "b241e9f3f322b81d5be2212363b33e7e73cbf507",
-  "score": 400,
+  "commit": "7ca3ab4cdc93d85573c73f33c7ff2ab209cd7599",
+  "score": 500,
   "totalScore": 600,
   "exercises": [
     {
@@ -37,8 +37,8 @@
     {
       "name": "sys_map",
       "max": 100,
-      "score": 0,
-      "status": "fail",
+      "score": 100,
+      "status": "pass",
       "exitCode": 0
     },
     {
@@ -50,7 +50,7 @@
     }
   ],
   "student": "185264646",
-  "runId": "39046723709",
+  "runId": "39205260782",
   "runAttempt": "1",
   "upload": {
     "status": "pending"
