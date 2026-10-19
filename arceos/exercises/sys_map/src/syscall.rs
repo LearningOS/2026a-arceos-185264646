@@ -138,9 +138,25 @@ fn sys_mmap(
     prot: i32,
     flags: i32,
     fd: i32,
-    _offset: isize,
+    offset: isize,
 ) -> isize {
-    unimplemented!("no sys_mmap!");
+    debug!("sys_mmap <= addr: {:p}, length: {}, prot: {:#x}, flags: {:#x}, fd: {}, offset: {}", addr, length, prot, flags, fd, offset);
+    let aligned_length = (length + 4095) & !4095;
+
+    let mut buf = std::vec![0u8; aligned_length];
+    // 0 => SEEK_SET
+    api::sys_lseek(fd, offset as _, 0);
+    sys_read(fd, buf.as_mut_ptr() as _, length);
+
+    // test called: mmap(NULL, 32, PROT_READ, MAP_PRIVATE, fd, 0);
+    let curr = axtask::current();
+    let mut uspace = curr.task_ext().aspace.lock();
+    let start = uspace.find_free_area(memory_addr::VirtAddr::from(addr as usize), aligned_length, memory_addr::VirtAddrRange::new(uspace.base(), uspace.end())).unwrap();
+
+    uspace.map_alloc(start, aligned_length, MappingFlags::READ | MappingFlags::USER, true).unwrap();
+    uspace.write(start, &buf).unwrap();
+
+    usize::from(start) as _
 }
 
 fn sys_openat(dfd: c_int, fname: *const c_char, flags: c_int, mode: api::ctypes::mode_t) -> isize {
