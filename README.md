@@ -34,6 +34,8 @@ cd 2026a-arceos-YOUR_GITHUB_LOGIN
 
 ## 环境配置
 
+使用 VS Code 时，先启动 Docker 并安装 **Dev Containers** 扩展。打开作业仓库根目录，选择 **Dev Containers: Reopen in Container**。首次打开会下载课程镜像并自动安装 rust-analyzer。索引完成后，用 Ctrl + 点击（macOS 用 ⌘ + 点击）或 F12 跳到定义。
+
 以下本地步骤面向 **x86_64 Linux / Ubuntu**；Windows 可在 WSL2 Ubuntu 中进行。Rust 安装原理可参考[环境配置教程](https://rcore-os.cn/arceos-tutorial-book/ch01-02.html)，编译版本使用本仓库 `arceos/rust-toolchain.toml` 中的 `nightly-2024-09-04`。
 
 先通过 [rustup](https://rustup.rs/) 安装 Rust，再在作业仓库根目录准备系统工具：
